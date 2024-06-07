@@ -15,11 +15,13 @@ def parse_requirements(role_data):
 
 
 def parse_variables(role_data):
+    for key, value in role_data.items():
+        if ("{{" in value):
+            pass  # process line
     return []
 
 
 def parse_dependencies(role_data):
-
     return []
 
 
@@ -74,5 +76,7 @@ def build_container():
 # build_container()
 # print(json.dumps(container, indent=4))
 
-# file = "../controller_configuration/roles/bulk_host_create/tasks/main.yml"
-# print(json.dumps(read_yml(file), indent=4))
+file = "../controller_configuration/roles/bulk_host_create/tasks/main.yml"
+
+print(json.dumps(read_yml(file), indent=4))
+print(parse_data(read_yml(file), "controller_configuration.bulk_host_create"))
