@@ -10,6 +10,48 @@ def read_yml(filepath):
     return data
 
 
+def parse_requirements(role_data):
+    return []
+
+
+def parse_variables(role_data):
+    return []
+
+
+def parse_dependencies(role_data):
+
+    return []
+
+
+def parse_data(role_data, fqcn):
+    role_name = fqcn
+    role_description = f"< enter {fqcn} description >"
+
+    # requirements
+    role_requirements = parse_requirements(role_data)
+
+    # variables
+    # var name | default value (t/f) | required (t/f) | description | example |
+    role_variables = parse_variables(role_data)
+
+    # dependencies
+    role_dependencies = parse_dependencies(role_data)
+
+    # misc
+    role_example_playbook = ""
+    role_licensce = "MIT"
+    role_author_info = "RedHat (c) 2024"
+
+    return (role_name,
+            role_description,
+            role_requirements,
+            role_variables,
+            role_dependencies,
+            role_example_playbook,
+            role_licensce,
+            role_author_info)
+
+
 namespace = "redhat"
 collection = "controller_configuration"
 container = {
@@ -32,5 +74,5 @@ def build_container():
 # build_container()
 # print(json.dumps(container, indent=4))
 
-
-print(json.dumps(read_yml("../controller_configuration/roles/dispatch/tasks/main.yml"), indent=4))
+# file = "../controller_configuration/roles/bulk_host_create/tasks/main.yml"
+# print(json.dumps(read_yml(file), indent=4))
